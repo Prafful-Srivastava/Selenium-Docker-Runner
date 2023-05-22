@@ -2,8 +2,6 @@ version: '3'
 services:
   hub:
     image: selenium/hub:4.8.3
-    ports:
-      - "4444:4444"
   chrome:
     image: selenium/node-chrome:4.8.3
     shm_size: '1gb'
@@ -33,7 +31,7 @@ services:
       - SE_EVENT_BUS_HOST=hub
       - MODULE=search-module.xml
     volumes:
-      - ./search-result:/usr/share/udemy/test-output
+      - ./output/search-result:/usr/share/udemy/test-output
   book-flight-module:
     image: dockps/selenium-docker
     depends_on:
@@ -44,6 +42,6 @@ services:
       - SE_EVENT_BUS_HOST=hub
       - MODULE=book-flight-module.xml
     volumes:
-      - ./book-result:/usr/share/udemy/test-output
+      - ./output/book-result:/usr/share/udemy/test-output
 
   
